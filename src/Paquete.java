@@ -1,11 +1,11 @@
 
 public class Paquete {
 	private Integer _peso;
-	private Integer _volumen;
+	private double _volumen;
 	private String _destino;
 	private boolean _frio;
 	
-	Paquete(String destino, Integer peso, Integer volumen, boolean frio){
+	Paquete(String destino, Integer peso, double volumen, boolean frio){
 		set_destino(destino);
 		set_pesoKG(peso);
 		set_volumen(volumen);
@@ -18,10 +18,10 @@ public class Paquete {
 	public void set_pesoKG(Integer _pesoKG) {
 		this._peso = _pesoKG;
 	}
-	public Integer get_volumen() {
+	public double get_volumen() {
 		return _volumen;
 	}
-	public void set_volumen(Integer _volumen) {
+	public void set_volumen(double _volumen) {
 		this._volumen = _volumen;
 	}
 	public String get_destino() {

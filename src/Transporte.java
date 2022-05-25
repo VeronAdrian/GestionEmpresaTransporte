@@ -1,21 +1,22 @@
 import java.util.ArrayList;
 
-public class Transporte {
-	private Integer _identificación;
-	private static Integer _cargaMaxima;
-	private static Integer _capacidadMaxima;
+public abstract class Transporte {
+	private String _identificación;
+	private double _cargaMaxima;
+	private double _capacidadMaxima;
 	private boolean _equipoRefrigeracion;
-	private Integer _costoKM;
+	private double _costoKM;
 	private Viaje _viajeAsignado;
 	private ArrayList<Paquete> Carga = new ArrayList<Paquete>();
+	private boolean _viajando;
 	
-	Transporte(Integer identificación, Integer cargaMaxima, Integer capacidadMaxima, boolean equipoRefrigeracion, Integer costoKM) {
-		set_identificación(identificación);
-		set_cargaMaxima(cargaMaxima);
-		set_capacidadMaxima(capacidadMaxima);
+	Transporte(String id, double cargaMax,boolean equipoRefrigeracion, double costoKM, double segCarga) {
+		set_identificación(id);
+		set_cargaMaxima(cargaMax);
 		set_equipoRefrigeracion(equipoRefrigeracion);
 		set_costoKM(costoKM);
 		blanquearViaje();
+		set_Viajando(false);
 	}
 	
 	public boolean agregarPaquete(Paquete nuevoPaquete) {
@@ -40,28 +41,20 @@ public class Transporte {
 		return Carga.size();
 	}
 	
-	public Integer get_identificación() {
+	public String get_identificación() {
 		return _identificación;
 	}
 
-	public void set_identificación(Integer _identificación) {
-		this._identificación = _identificación;
+	public void set_identificación(String id) {
+		this._identificación = id;
 	}
 
-	public static Integer get_cargaMaxima() {
+	public double get_cargaMaxima() {
 		return _cargaMaxima;
 	}
 
-	public static void set_cargaMaxima(Integer _cargaMaxima) {
-		Transporte._cargaMaxima = _cargaMaxima;
-	}
-
-	public static Integer get_capacidadMaxima() {
-		return _capacidadMaxima;
-	}
-
-	public static void set_capacidadMaxima(Integer _capacidadMaxima) {
-		Transporte._capacidadMaxima = _capacidadMaxima;
+	public void set_cargaMaxima(double d) {
+		this._cargaMaxima = d;
 	}
 
 	public boolean get_equipoRefrigeracion() {
@@ -72,12 +65,12 @@ public class Transporte {
 		this._equipoRefrigeracion = _equipoRefrigeracion;
 	}
 
-	public Integer get_costoKM() {
+	public double get_costoKM() {
 		return _costoKM;
 	}
 
-	public void set_costoKM(Integer _costoKM) {
-		this._costoKM = _costoKM;
+	public void set_costoKM(double segCarga) {
+		this._costoKM = segCarga;
 	}
 	
 	public Viaje get_viajeAsignado() {
@@ -86,6 +79,22 @@ public class Transporte {
 	
 	public void set_viajeAsignado(Viaje _viajeAsignado) {
 		this._viajeAsignado = _viajeAsignado;
+	}
+
+	public boolean is_Viajando() {
+		return _viajando;
+	}
+
+	public void set_Viajando(boolean viajando) {
+		this._viajando = viajando;
+	}
+
+	public double get_capacidadMaxima() {
+		return _capacidadMaxima;
+	}
+
+	public void set_capacidadMaxima(double _capacidadMaxima) {
+		this._capacidadMaxima = _capacidadMaxima;
 	}
 
 }

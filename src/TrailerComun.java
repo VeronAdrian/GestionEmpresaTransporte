@@ -1,20 +1,12 @@
 
 public class TrailerComun extends Transporte{
-	private boolean _seguroCarga;
 	private static Integer _distanciaMaximaKM;
+	private double _seguroCarga;
 	
-	TrailerComun(Integer identificación, Integer cargaMaxima,boolean equipoRefrigeracion, Integer capacidadMaxima, Integer costoKM) {
-		super(identificación, cargaMaxima, capacidadMaxima, equipoRefrigeracion, costoKM);
-		set_seguroCarga(true);
+	TrailerComun(String id, double cargaMax,boolean equipoRefrigeracion, double costoKm, double segCarga) {
+		super(id, cargaMax, equipoRefrigeracion, costoKm, segCarga);
+		set_seguroCarga(segCarga);
 		set_distanciaMaximaKM(500);
-	}
-	
-	public boolean is_seguroCarga() {
-		return _seguroCarga;
-	}
-
-	public void set_seguroCarga(boolean _seguroCarga) {
-		this._seguroCarga = _seguroCarga;
 	}
 
 	public static Integer get_distanciaMaximaKM() {
@@ -23,6 +15,14 @@ public class TrailerComun extends Transporte{
 
 	public static void set_distanciaMaximaKM(Integer _distanciaMaxima) {
 		TrailerComun._distanciaMaximaKM = _distanciaMaxima;
+	}
+
+	public double get_seguroCarga() {
+		return _seguroCarga;
+	}
+
+	public void set_seguroCarga(double _seguroCarga) {
+		this._seguroCarga = _seguroCarga;
 	}
 
 }

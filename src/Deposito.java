@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Deposito {
 	private boolean _refrigeracion;
-	private Integer _capacidadMaxima;
-	private ArrayList<Paquete> Depositos = new ArrayList<Paquete>();
+	private double _capacidadMaxima;
+	private List<Paquete> Depositos = new ArrayList<Paquete>();
 
 	Deposito(boolean refrigeracion, Integer capacidadMaxima){
 		set_capacidadMaxima(capacidadMaxima);
@@ -19,15 +20,18 @@ public class Deposito {
 		return false;
 	}
 	
-	public ArrayList<Paquete> inventario() {
+	public List<Paquete> inventario() {
 		return Depositos;
 	}
 	
-	public boolean retirarPaquete(Paquete paqueteRetirado) {
-		if(Depositos.contains(paqueteRetirado)) {
-			return Depositos.remove(paqueteRetirado);
+	public void retirarPaquete(Paquete paqueteRetirado) {
+		List<Paquete> nuevoDepositos = new ArrayList<Paquete>();
+		for(Paquete paquete : Depositos) {
+			if(!paquete.equals(paqueteRetirado)) {
+				nuevoDepositos.add(paquete);
+			}
 		}
-		return false;
+		Depositos = nuevoDepositos;
 	}
 	
 	public boolean get_refrigeracion() {
@@ -38,11 +42,11 @@ public class Deposito {
 		this._refrigeracion = _refrigeracion;
 	}
 
-	public Integer get_capacidadMaxima() {
+	public double get_capacidadMaxima() {
 		return _capacidadMaxima;
 	}
 
-	public void set_capacidadMaxima(Integer _capacidadMaxima) {
-		this._capacidadMaxima = _capacidadMaxima;
+	public void set_capacidadMaxima(double d) {
+		this._capacidadMaxima = d;
 	}
 }

@@ -1,23 +1,24 @@
 
 public class MegaTrailer extends Transporte{
-	private boolean _seguroCarga;
+	private double _seguroCarga;
 	private static Integer _distanciaMaximaKM;
-	private Integer _costoFijo;
-	private Integer _costoComida;
+	private double _costoFijo;
+	private double _costoComida;
 	
-	MegaTrailer(Integer identificación, Integer cargaMaxima, Integer capacidadMaxima, boolean equipoRefrigeracion, Integer costoKM, Integer costoFijo, Integer costoComida) {
-		super(identificación, cargaMaxima, capacidadMaxima, equipoRefrigeracion, costoKM);
-		set_seguroCarga(true);
+	MegaTrailer(String id, double cargaMax, double capacidad, boolean tieneRefrigeracion, double costoKM, double segCarga, double costoFijo, double costoComida) {
+		super(id, cargaMax, tieneRefrigeracion, costoKM, segCarga);
+		set_capacidadMaxima(capacidad);
+		set_seguroCarga(segCarga);
 		set_distanciaMaximaKM(500);
 		set_costoFijo(costoFijo);
 		set_costoComida(costoComida);
 	}
 	
-	public boolean is_seguroCarga() {
+	public double get_seguroCarga() {
 		return _seguroCarga;
 	}
 
-	public void set_seguroCarga(boolean _seguroCarga) {
+	public void set_seguroCarga(double _seguroCarga) {
 		this._seguroCarga = _seguroCarga;
 	}
 
@@ -29,20 +30,20 @@ public class MegaTrailer extends Transporte{
 		MegaTrailer._distanciaMaximaKM = _distanciaMaxima;
 	}
 
-	public Integer get_costoFijo() {
+	public double get_costoFijo() {
 		return _costoFijo;
 	}
 
-	public void set_costoFijo(Integer _costoFijo) {
-		this._costoFijo = _costoFijo;
+	public void set_costoFijo(double costoFijo) {
+		this._costoFijo = costoFijo;
 	}
 
-	public Integer get_costoComida() {
+	public double get_costoComida() {
 		return _costoComida;
 	}
 
-	public void set_costoComida(Integer _costoComida) {
-		this._costoComida = _costoComida;
+	public void set_costoComida(double costoComida) {
+		this._costoComida = costoComida;
 	}
 
 }
