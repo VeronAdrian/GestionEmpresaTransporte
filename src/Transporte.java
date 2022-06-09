@@ -10,15 +10,6 @@ public abstract class Transporte {
 	private ArrayList<Paquete> Carga = new ArrayList<Paquete>();
 	private boolean _viajando;
 	
-	Transporte(String id, double cargaMax,boolean equipoRefrigeracion, double costoKM, double segCarga) {
-		set_identificación(id);
-		set_cargaMaxima(cargaMax);
-		set_equipoRefrigeracion(equipoRefrigeracion);
-		set_costoKM(costoKM);
-		blanquearViaje();
-		set_Viajando(false);
-	}
-	
 	public boolean agregarPaquete(Paquete nuevoPaquete) {
 		if(nuevoPaquete.get_volumen()<=get_cargaMaxima()) {
 			Carga.add(nuevoPaquete);
@@ -40,6 +31,8 @@ public abstract class Transporte {
 	public Integer cantidadCargada() {
 		return Carga.size();
 	}
+	
+	public abstract String toString();
 	
 	public String get_identificación() {
 		return _identificación;

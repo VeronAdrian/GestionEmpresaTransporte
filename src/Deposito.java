@@ -34,6 +34,19 @@ public class Deposito {
 		Depositos = nuevoDepositos;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		if(!get_refrigeracion()) {
+			string.append("El deposito no tiene refrigeracion,");
+		}
+		else {
+			string.append("El deposito tiene refrigeracion,");
+		}
+		string.append(" cuenta con una capacidad de: "+get_capacidadMaxima()+" y con "+Depositos.size()+" paquetes almacenados");
+		return string.toString();
+	}
+	
 	public boolean get_refrigeracion() {
 		return _refrigeracion;
 	}

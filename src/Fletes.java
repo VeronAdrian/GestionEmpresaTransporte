@@ -4,11 +4,28 @@ public class Fletes extends Transporte{
 	private double _cantidadAcompañantes;
 
 	Fletes(String id, double cargaMax, double capacidad, double costoKM, int cantAcompaniantes, double costoPorAcompaniante) {
-		super(id, cargaMax, false, costoKM, 0);
-		set_costoAcompañante(costoPorAcompaniante);
+		set_identificación(id);
+		set_cargaMaxima(cargaMax);
+		set_capacidadMaxima(capacidad);
+		set_costoKM(costoKM);
 		set_cantidadAcompañantes(cantAcompaniantes);
+		set_costoAcompañante(costoPorAcompaniante);
 	}
-
+	
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("Vehiculo id: "+get_identificación());
+		if(is_Viajando()) {
+			string.append(" Actualmente esta viajando");
+		}
+		else {
+			string.append(" Actualmente no esta viajando");
+		}
+		string.append(" Carga:"+get_cargaMaxima()+" No puede transportar paquetes frios Cuenta con "+get_cantidadAcompañantes()+" acompañantes");
+		return string.toString();
+	}
+	
 	public double get_costoAcompañante() {
 		return _costoAcompañante;
 	}

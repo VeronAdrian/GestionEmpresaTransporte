@@ -71,6 +71,7 @@ public class Empresa {
 			throw new RuntimeException("El transporte: "+(id)+" no esta en viaje.");
 		}
 		else {
+			DestinosDistancia.remove(Vehiculos.get(id).get_viajeAsignado().get_destino());
 			Vehiculos.get(id).vaciarPaquete();
 			Vehiculos.get(id).blanquearViaje();
 			Vehiculos.get(id).set_Viajando(false);
@@ -183,7 +184,19 @@ public class Empresa {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("CUIT de la empresa: "+get_CUIT()+" Nombre de la empresa: "+get_nombre()+" Cantidad de depositos: "+Depositos.size());
+		string.append("CUIT de la empresa: "+get_CUIT()+" Nombre de la empresa: "+get_nombre()+" Cantidad de depositos: "+Depositos.size()+"\n");
+		string.append("Se cuentan con los siguientes depositos:\n");
+		for(Deposito deposito : Depositos) {
+			string.append(deposito.toString()+"\n");
+		}
+		string.append("Se cuentan con los siguientes vehiculos registrados:\n");
+		for (Entry<String, Transporte> entrada : Vehiculos.entrySet()) {
+			string.append(entrada.getValue().toString()+"\n");
+		}
+		string.append("Actualmente existen los siguientes viajes:\n");
+		for (Entry<String, Viaje> entrada : DestinosDistancia.entrySet()) {
+			string.append("Origen: "+entrada.getKey()+" "+entrada.getValue().toString()+"\n");
+		}
 		return string.toString();
 	}
 	

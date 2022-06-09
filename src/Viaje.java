@@ -8,6 +8,13 @@ public class Viaje {
 		set_distanciaKM(distancia);
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("| Destino: "+get_destino()+" | Distancia: "+get_distanciaKM());
+		return string.toString();
+	}
+	
 	public String get_destino() {
 		return _destino;
 	}

@@ -1,17 +1,40 @@
 
 public class MegaTrailer extends Transporte{
 	private double _seguroCarga;
-	private static Integer _distanciaMaximaKM;
+	private Integer _distanciaMaximaKM;
 	private double _costoFijo;
 	private double _costoComida;
 	
 	MegaTrailer(String id, double cargaMax, double capacidad, boolean tieneRefrigeracion, double costoKM, double segCarga, double costoFijo, double costoComida) {
-		super(id, cargaMax, tieneRefrigeracion, costoKM, segCarga);
+		set_identificación(id);
+		set_cargaMaxima(cargaMax);
 		set_capacidadMaxima(capacidad);
+		set_equipoRefrigeracion(tieneRefrigeracion);
+		set_costoKM(costoKM);
 		set_seguroCarga(segCarga);
-		set_distanciaMaximaKM(500);
 		set_costoFijo(costoFijo);
 		set_costoComida(costoComida);
+		set_distanciaMaximaKM(500);
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("Vehiculo id: "+get_identificación());
+		if(is_Viajando()) {
+			string.append(" Actualmente esta viajando");
+		}
+		else {
+			string.append(" Actualmente no esta viajando");
+		}
+		string.append(" Carga:"+get_cargaMaxima()+" Tiene un seguro de carga por: "+get_seguroCarga());
+		if(get_equipoRefrigeracion()) {
+			string.append(" Puede transportar paquetes frios");
+		}
+		else {
+			string.append(" No puede transportar paquetes frios");
+		}
+		return string.toString();
 	}
 	
 	public double get_seguroCarga() {
@@ -22,12 +45,12 @@ public class MegaTrailer extends Transporte{
 		this._seguroCarga = _seguroCarga;
 	}
 
-	public static Integer get_distanciaMaximaKM() {
+	public Integer get_distanciaMaximaKM() {
 		return _distanciaMaximaKM;
 	}
 
-	public static void set_distanciaMaximaKM(Integer _distanciaMaxima) {
-		MegaTrailer._distanciaMaximaKM = _distanciaMaxima;
+	public void set_distanciaMaximaKM(Integer _distanciaMaxima) {
+		this._distanciaMaximaKM = _distanciaMaxima;
 	}
 
 	public double get_costoFijo() {
